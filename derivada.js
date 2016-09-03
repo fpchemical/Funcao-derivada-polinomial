@@ -1,14 +1,9 @@
 
-const calcula = (numeros) => {
-  // let calc = [numeros[0]*numeros[1], numeros[1]-1]
-  return [numeros[0]*numeros[1], numeros[1]-1]
-}
+const calcula = (nums) => [nums[0]*nums[1], nums[1]-1]
 
-const inicia = (equacao) => {
+const extraiNumeros = (equacao) => {
   let calc = []
-  equacao.forEach((el,i) => {
-    calc.push(calcula(el.split('x')))
-  })
+  equacao.forEach((num,i) => calc.push(num.split('x')))
   return calc 
 }
 
@@ -16,17 +11,17 @@ const derive = (equacao) => {
   let calc = []
 
   if(equacao[0][1]===1) return  equacao 
-  equacao.forEach((el,i) => { 
-    if(i===1 && el[1]===0) return calc.push(el)
-    else calc.push(calcula(el))   
+  equacao.forEach((num,i) => { 
+    if(i===1 && num[1]===0) return calc.push(num)
+    else calc.push(calcula(num))   
     if(calc[0][1] > 1) return derive(calc)
   })
   return calc
 }
 
-const deriv = (equacao) => {
-  let calc2 = derive(inicia(equacao))
-  let resutado = calc2[0][0] + 'x + ' + calc2[1][0]
+const derivadaPolinomial = (equacao) => {
+  let calculo = derive(extraiNumeros(equacao))
+  let resutado = calculo[0][0] + 'x + ' + calculo[1][0]
   console.log('resutado', resutado)
 }
 
@@ -34,4 +29,4 @@ const deriv = (equacao) => {
 
 const equacao = ['7x6', '+6x5', '+2x4', '+9x3', '+3x2', '+4x1']
 
-deriv(equacao)
+derivadaPolinomial(equacao)
