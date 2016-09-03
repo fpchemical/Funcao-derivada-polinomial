@@ -27,9 +27,9 @@ const calculeIntegral = (equacao) => {
     xs.push(transformeX(num))
   })
 
-  return (x, expoente, i) => {
+  return (x, reduzida, i) => {
     let resultado = 0
-    expoente.forEach((el, index) => resultado += xs[index] * Math.pow(x, el[1]))
+    reduzida.forEach((el, index) => resultado += xs[index] * Math.pow(x, el[1]))
     return resultado 
   }
 }
