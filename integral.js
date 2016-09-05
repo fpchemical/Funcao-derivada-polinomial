@@ -9,12 +9,7 @@ const calcula = (nums) => (nums.length === 1)
   ? [parseInt(nums[0]), 1]
   : [parseInt(nums[0]), parseInt(nums[1])+1]
 
-const extraiNumeros = (equacao) => {
-  const calc = []
-  equacao.forEach((num,i) => calc.push(num.split('x')))
-  return calc 
-}
-
+const extraiNumeros = require('./extraiNumeros')
 const reduzirIntegral = (equacao) => {
   const calc = []
   equacao.forEach((num,i) => calc.push(calcula(num)))
@@ -45,6 +40,6 @@ const integralDefinida = (equacao, lim) => {
   // return calculos.reduce((antes, atual) => antes + atual)
 }
 
-const equacao = ['1x2', '+2x1', '+4']
+const equacao = ['4x2', '+7x1', '+2']
 console.log(integralDefinida(equacao, [3, 0]))
 
